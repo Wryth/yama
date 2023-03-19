@@ -14,13 +14,15 @@ function Timer$Timer(props) {
     Curry._1(setSeconds, (function (param) {
             return seconds + 1000 | 0;
           }));
-    console.log(seconds);
   };
   React.useEffect(function () {
-        if (isActive) {
-          setInterval(updateTime, 1000);
+        if (!isActive) {
+          return ;
         }
-        
+        var interval = setInterval(updateTime, 1000);
+        return (function (param) {
+                  clearInterval(interval);
+                });
       });
   var time = seconds / 1000 | 0;
   return React.createElement("div", {
