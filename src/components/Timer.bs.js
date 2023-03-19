@@ -25,9 +25,11 @@ function Timer$Timer(props) {
                 });
       });
   var time = seconds / 1000 | 0;
-  return React.createElement("div", {
-              className: "text-center"
-            }, time);
+  return React.createElement(React.Fragment, undefined, React.createElement("div", {
+                  className: "text-center"
+                }, time), React.createElement("audio", {
+                  src: "next/singing-bowl.mp3"
+                }, "Your browser does not support the <code>audio</code>"));
 }
 
 var Timer = {

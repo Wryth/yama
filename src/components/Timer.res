@@ -17,8 +17,15 @@ module Timer = {
 
 		let time = React.int(seconds/1000) //React.string(minutes->Belt.Int.toString ++  "." ++ seconds->Belt.Int.toString)
 
-		<div className="text-center">
-			time
-		</div>
+		<>
+			<div className="text-center">
+				time
+			</div>
+
+			<audio
+				src="next/singing-bowl.mp3">
+				{React.string("Your browser does not support the <code>audio</code>")}
+			</audio>
+		</>
 	}
 }
