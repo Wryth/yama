@@ -10,7 +10,7 @@ function Main$Main(props) {
       });
   var setIsActive = match[1];
   var isActive = match[0];
-  var startClock = function ($$event) {
+  var startClock = function (param) {
     Curry._1(setIsActive, (function (param) {
             return !isActive;
           }));
