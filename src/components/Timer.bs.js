@@ -11,12 +11,12 @@ function Timer$Timer(props) {
   var match = React.useState(function () {
         return 0;
       });
-  var setSeconds = match[1];
-  var seconds = match[0];
+  var setMilliseconds = match[1];
+  var milliseconds = match[0];
   React.useEffect(function () {
         var updateTime = function (param) {
-          Curry._1(setSeconds, (function (param) {
-                  return seconds + 1000 | 0;
+          Curry._1(setMilliseconds, (function (param) {
+                  return milliseconds + 1000 | 0;
                 }));
         };
         if (!isActive) {
@@ -27,8 +27,10 @@ function Timer$Timer(props) {
                   clearInterval(interval);
                 });
       });
-  var play = seconds === 300000 ? (<UseBell />) : React.createElement(React.Fragment, undefined);
-  var time = seconds / 1000 | 0;
+  var play = milliseconds % 300000 === 0 && isActive ? (<UseBell />) : React.createElement(React.Fragment, undefined);
+  var minutes = String(milliseconds / 60000 | 0);
+  var seconds = String(milliseconds % 60000 / 1000 | 0);
+  var time = minutes + ":" + seconds;
   return React.createElement(React.Fragment, undefined, React.createElement("div", {
                   className: "text-center"
                 }, time), play);
